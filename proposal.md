@@ -2,7 +2,7 @@
 The Winston Game
 
 ## Repository
-<Link to your project's public GitHub respository>
+https://github.com/jjo230000/Jaden-O-Final-Project.git
 
 ## Description
 This will be "The Winston Game", a text-based adventure game based on an old series of mine called The Winston Show, you'll be able to explore different scenarios in Winston's town. This game will involve storytelling and character work, making it relevant to media and digital arts.
