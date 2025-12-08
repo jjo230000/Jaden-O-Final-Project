@@ -114,7 +114,20 @@ U|  _"\ uU  /"\  u |  _"\   |"|       \/"_ \/U /"___| |"|/ /  \| ___"|/U|"|u
  ||>>_    \\    >>  |||_    //  \\      \\    _// \\,-,>> \\,-.<<   >>  |||_  
 (__)__)  (__)  (__)(__)_)  (_")("_)    (__)  (__)(__)\.)   (_/(__) (__)(__)_) 
 """
-
+endlogo = """
+      ___           ___           ___                    ___           ___           ___     
+     /\  \         /\__\         /\  \                  /\  \         /\__\         /\  \    
+     \:\  \       /:/  /        /::\  \                /::\  \       /::|  |       /::\  \   
+      \:\  \     /:/__/        /:/\:\  \              /:/\:\  \     /:|:|  |      /:/\:\  \  
+      /::\  \   /::\  \ ___   /::\~\:\  \            /::\~\:\  \   /:/|:|  |__   /:/  \:\__\ 
+     /:/\:\__\ /:/\:\  /\__\ /:/\:\ \:\__\          /:/\:\ \:\__\ /:/ |:| /\__\ /:/__/ \:|__|
+    /:/  \/__/ \/__\:\/:/  / \:\~\:\ \/__/          \:\~\:\ \/__/ \/__|:|/:/  / \:\  \ /:/  /
+   /:/  /           \::/  /   \:\ \:\__\             \:\ \:\__\       |:/:/  /   \:\  /:/  / 
+   \/__/            /:/  /     \:\ \/__/              \:\ \/__/       |::/  /     \:\/:/  /  
+                   /:/  /       \:\__\                 \:\__\         /:/  /       \::/__/   
+                   \/__/         \/__/                  \/__/         \/__/         ~~       
+"""
+#The class for the Character, used for winston
 class Character():
     def __init__(self):
         self.loops = 0
@@ -125,7 +138,7 @@ class Character():
         self.p_available = True
         self.pe_available = True
         self.home_available = False
-
+    #Every path that leads to a death uses this function
     def die(self):
         self.deaths += 1
 
@@ -199,7 +212,8 @@ def milkyway(Winston):
             print("You drift right in the vessel's path, and surprisingly, it stops.\nIt's airlock opens, and figures carry you in.\nOnce on the vessel, you see multiple people of different species -- a purple one with scales,\nholding hands with a very short tan woman, next to them is a tiny little pod thing, close to a tall black man,\nan axolotol standing on 2 feet, some uptight looking lightskinned woman, and...\nand...\nis that your wife?\nObviously not, this woman has tan skin and has katanas sheithed.\nBut you can't help but be remined of your ex-wife, Pinky.\nWhat do you say?")
 
             mwchoice2 = input("\n1. \"Thank you, kind strangers.\" \n2. \"OH MY GOD YOU LOOK JUST LIKE MY EX-WIFE!\"\n")
-
+            
+            print("\n")
             match mwchoice2:
                 case "1":
                     print("\n\n\"You're welcome, yellow sir,\" said an uptight-looking woman in a blue suit and black pants.\n\"I'm Georgia of the IGDA.\nThese are my associates, and we'd love to drop you off on your planet, but we don't have much time.\nWe have a very important expedition to get to. I can drop you off at the nearest station.\"")
@@ -209,11 +223,11 @@ def milkyway(Winston):
                     print("\n\nSilence.\nThe tall human man steps in front of her." \
                     "\nActually, this one reminds you of your friend Mike." \
                     "\nYour *dead* friend Mike." \
-                    "\n\"What species is this creature, even?\" says the computerized voice of the little pod thing." \
+                    "\n\n\"What species is this creature, even?\" says the computerized voice of the little pod thing." \
                     "\nThere's a small little dot in there, a little smaller than a closed fist." \
                     "\nIs that the actual creature, and the pod is it's vehicle?" \
                     "\nIt whips around and scans you.\n\"Unrecognized. How curious.\"" \
-                    "\n\"Okay, we don't have time for this,\" says the stern human woman." \
+                    "\n\n\"Okay, we don't have time for this,\" says the stern human woman." \
                     "\n\"Rebecca, Michael, throw the unidentified yellow thing out. I'd like to be on the path to the Andromeda soon." \
                     "\"\n\nRebecca, huh?\nMICHAEL? They share the same name?" \
                     "\nAnd a journey to the Andromeda? Now this was getting interesting.")
@@ -226,7 +240,7 @@ def milkyway(Winston):
                     "\nIt seems that this crew is getting to the bottom of whatever's  to this galaxy." \
                     "\nSoon it enters some kind of much-much-faster-than-light-speed travel." \
                     "\nThis also isn't the first time you've experienced something like this, and hold on for dear life." \
-                    "\nSoon, you find yourself somewhere... different.")
+                    "\n\nSoon, you find yourself somewhere... different.")
                     proceed()
                     print(thelogo)
                     print(andromedalogo)
@@ -245,7 +259,16 @@ def milkyway(Winston):
                                     Winston.die()
                                 case "4":
                                     print("\n...\n...\n...\"Who are you? Are you... with them?\"\nYou know who he's talking about.\n")
-                                    print("\"No, I'm an indpendent entity.\"\nYou sit next to him. You've learned that sayind nothing and letting the kid talk works, so that's what you do.\n")
+                                    print("\"No, I'm an indpendent entity.\"\nYou sit next to him. You've learned that sayind nothing and letting the kid talk works, so that's what you do.\nYou listen.")
+                                    proceed()
+                                    print("\n\"I'm... I dunno, I... I'm over 150 years old...\nI woke up with powers...\nI killed a lot of people..."\
+                                    "\n\nBut there was these two, these two humans like me. Michael and Rebecca\nThey were nice. Genuine, not fake. It was me, and them, and Ax, and Dot.\nIt was good.\"\nThe kid starts shaking."\
+                                    "\n\n\"Then I betrayed them. I... I kept killing. These Esteers. Mike and Rebecca went to prison because of me.\nAnd then they STILL tried to stop me.\nAnd then... I might've killed them.\n\nAnd then I ran away. And now I'm here.\"")
+                                    proceed()
+                                    print("\n\nOh my god. That IS a lot.\nYou decide to not say anything for a while.\nBut then the words come to you.\n\n")
+                                    print("\"I've also made a lot of mistakes. I betrayed the trust of people I love.\nAnd I've also run away. I mean, look at where I am.\n\nBut I think... I think people are more forgiving than you thinnk they are. That's what I've learned." \
+                                    "\n\nIf these humans are as as kind are you say they are, they'll take you.\nI've met those two you're talking about. They both remind me of... people I know. They were good people.\nYou'll be just fine, I think. Not... immediately, but in the end.\"")
+                                    print("\n\nThe boy has been listening intently. He nods slowly. His whips around. \"I feel them. They're here. And they're in trouble.\"\nHe turns back.\n\"Thank you, weird yellow thing.\"")
                                     print("Alexander nods, and he floats up. His entire body is enveloped in darkness.\nHe blasts away at lightspeed to save his caretakers.\nYou think that you made one step to bring a family together.\nA family you never got to have in your world.")
                                     Winston.complete_realm(Winston.mw_available)
                                     Winston.mw_available = False
@@ -253,28 +276,51 @@ def milkyway(Winston):
             print("You burn up into the atmosphere. While falling, you see a giant archipelogo that seems like the shape of the USA...\nWait a second, that IS the USA.\nYou're filled with so many questions as to how this could happen that you forget to try and land and die on impact.")
             Winston.die()
         case "3":
-            print("You see a bunch of ruined spaceships.")
+            print("You see a bunch of ruined spaceships.\nWhite tendrils that are fading.\nAnd the supermassive black hole, Saggitarius A*." \
+            "\n\"Oh, hey there!\"\nA somewhat ordinary looking woman waves to you in a spaceship, from a loudspeaker.\n"\
+            "\"Wanna join my organizatioin? The Intergalactic Coalition of Correction could really use someone like you.\"\nYou immediately get cult vibes." \
+            "\n\"Uh... no?\"\nShe sighs.\nYou are suddenly rammed with the spaceship and are sent into the black hole, and are\nspaghettified." \
+            "\nRight before you lose conciousness, you see an image of a forlorn boy sitting on an asteroid.\nYou get the stark feeling of wanting to talk to him." \
+            "\nWhere IS this one?\nAnyway, it's too late now, because you're dead.")
+            Winston.die()
             
 
     input("Press Enter to continue.")
 #Qilia. Help two sisters grow closer.
 def qilia(Winston):
     print(qilialogo)
-    print("You feel an overwhelming sense of dread and despair.\nIs this what the presense of demons feel like?\nAfter you stop yourself from throwing up, you find yourslf in a basement.\nThere are multiple bookshelves filled with potions, spellbooks, and wands." \
+    print("\nYou feel an overwhelming sense of dread and despair.\nIs this what the presense of demons feel like?" \
+    "\nAfter you stop yourself from throwing up, you find yourslf in a basement." \
+    "\nThere are multiple bookshelves filled with potions, spellbooks, and wands.\nSuddenly, " \
     "\n\"Oooooh! Girls, there's another demon here to torture you! " \
     "Wait a second, this is no demon.\"\nTwo very surly looking teenage girls turn the corner and stare you down.")
     
-    q_finaloption = input("1. Go between the girls and try and fizzle out the conflict.\n2. Laugh obnoxiously and go \"FIGHT, FIGHT Little girls!\"")
+    print("What will you do?")
 
-    match q_finaloption:
-        case "2:":
-            print("\nAs you bleed out, you hear one sister go, \"You're not bad.\"\nYou think, despite being killed, you did the right thing in this realm.")
+    q_option1 = input("1. Run as fast as you can out of this basement.\n2. Attempt to fight\n3. ")
+    print("\n")
+    match q_option1:
+        case "1":
+            print("\n\nYou run out of this basement.\nThe first thing you notice when you run out the front door is that the sky is PURPLE.\nThe entire horizon is blocked by a giant crater wall.\nWhere exactly IS this place?" \
+            "\nYou keep running, out into the harsh barren desert, where the ground is red sand.\nThere are monsters everywhere...\nYou see a white squirrel. It suddenly goes from blurry to clear.\nYou feel that your fate has been sealed.\n[THE FOLLOWING DEATH HAS BEEN CENSORED FOR BEING TOO HORRIFFIC]")
             Winston.die()
-            Winston.complete_realm(Winston.q_available)
-            Winston.q_available = False
+        case "2":
+            print("You hold up your arms in fisticuffs")
+            q_finaloption = input("1. Go between the girls and try and fizzle out the conflict.\n2. Laugh obnoxiously and go \"FIGHT, FIGHT Little girls!\"")
+            print("\n")
+            match q_finaloption:
+                case "1":
+                    print("\"STOP FIGHTING!\"\nThe two sisters look blankly at you.\n\"C'mon, can't you guys just get along?\"")
+                case "2:":
+                    print("\nMWAHAHAHAHAHAHA!\nAs you bleed out, you hear one sister go, \"You're not bad.\"" \
+                    "\nYou think, despite being killed, you did the right thing in this realm.")
+                    Winston.die()
+                    Winston.complete_realm(Winston.q_available)
+                    Winston.q_available = False
+    
     
     proceed()
-#Primordia.
+#Primordia. Help an engineer with her insecurity
 def primordia(Winston):
     print(primordialogo)
     print("You're in a lush jungle.\nYou look over the edge of this island and you see bright skies. " \
@@ -285,6 +331,17 @@ def primordia(Winston):
     print("\nWhat do you do...?\n")
     primordiachoice1 = input("1. I mean you no harm, sir!\n2. PLEASE HAVE MERCY!\n\n3. I'm a multiversal traveller from an entirely different plane of existence, and I \n4. [Run away screaming]")
     print("It turns out, sometimes the best thing to do is let people sort it out.")
+    proceed()
+
+    primordia_final_choice = input("1. \"I'm very sorry about that, Gilda.\"\n2. Slap her ungrateful self in the face.")
+    match primordia_final_choice:
+        case "1":
+            print("")
+        case "2":
+            print("*SMACK*\n\"So you're telling me, you have a fulfilling job as an engineer,\na family that takes you in and loves you, including children that look up to you," \
+            "\nand you're here like a weepy willow sack of sand?")
+            print("...")
+            print("...")
     proceed()
 #Padlocke. Talk to a bunch of eccentric children, and help a very sad one.
 def padlocke(Winston):
@@ -337,7 +394,7 @@ def padlocke(Winston):
                         proceed()
                         print("\n\"Sometimes I feel... weird. I'm happy, then suddenly I'm not.\nI like how things are now, mostly, but it's not gonna be like that forver.\nSoon I'm gonna havta learn how to pay taxes, and be depressed because I'm an adult,\nand I'll never have fun until I'm 75 but by then I'll have arthritis and not be able to move, or something.\nAnd then I'll just watch old cartoons all day. And then die.\"")
                         proceed()
-                        print("You're not sure of what to say at first.\n\"Getting older's not that bad. You'll have new things you can be grateful for, like greater freedom.\nI guess it's not all sunshine and rainbows,\nbut you get to drive Wiggle Wagglez and have Guys Nights and gamble and mess up lotteries and go out into space and blow stuff up...\nAt least, that's what I did.\"")
+                        print("\n\nYou're not sure of what to say at first.\n\"Getting older's not that bad. You'll have new things you can be grateful for, like greater freedom.\nI guess it's not all sunshine and rainbows,\nbut you get to drive Wiggle Wagglez and have Guys Nights and gamble and mess up lotteries and go out into space and blow stuff up...\nAt least, that's what I did.\"")
                         print("The girl looks very curious, and a bit delighted, so you deciede to tell her some tales of your life.\nAfter a while, she seems to feel just a bit better.\nThe clock strikes 3:00 pm and all the kids go home.\nIt's time to for you to go... well, not home, but back to the liminal space.\n")
                         Winston.complete_realm(Winston.pe_available)
                         Winston.pe_available = False
@@ -351,12 +408,15 @@ def padlocke(Winston):
     proceed()
 
 def home(Winston):
+    in_loop = False
     print("...gulp.")
     proceed()
     print("You've learned so much through your journey through this strange, vast multiverse." \
     "\nYou learned that it's never too late to redeem yourself." \
     "\nBonds that have been sour for long don't have to stay that way." \
     "\n\nAnd growing up is... okay.")
+
+    endlogo()
 
 def main():
     #setting the character, Winston. All the default values suffice
@@ -372,7 +432,6 @@ def main():
         #The Stats Page that comes before the dimension select screen, only appears if you've been through a loop at least a single time
         stats_page(winston)
 
-        print(winston.mw_available)
         #The core option
         if winston.mw_available == True: 
             print("1. Visit the bussling galactic metropolis, the Milky Way Galaxy")
@@ -393,7 +452,6 @@ def main():
                     milkyway(winston)
                 else:
                     print(already_completed_message)
-                    continue
             case "2":
                 if winston.q_available == True:
                     qilia(winston)
@@ -417,7 +475,6 @@ def main():
                 input("Press Enter to continue.")
         #add another to the loop counter
         winston.loops += 1
-
 
 if __name__ == "__main__":
     main()
