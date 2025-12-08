@@ -130,14 +130,19 @@ endlogo = """
 #The class for the Character, used for winston
 class Character():
     def __init__(self):
+        #These three stats are the main statistics that are being tracked.
         self.loops = 0
         self.deaths = 0
         self.realms_completed = 0
+        #Tracking if each of the realms are available. 
+        # At the start of the game, Milky Way, Qilia, Primordia, and Padlocke are available, but going home is not.
         self.mw_available = True
         self.q_available = True
         self.p_available = True
         self.pe_available = True
         self.home_available = False
+        #Makes it so that the messgae of "you have a new quest" only appears on single time
+        self.realm_completemessage_appear = True
     #Every path that leads to a death uses this function
     def die(self):
         self.deaths += 1
@@ -177,11 +182,17 @@ def intro_text(Winston):
             print(logo)
             proceed()
 
-    if Winston.realms_completed == 1: 
+    if Winston.realms_completed == 1 and Winston.realm_completemessage_appear == True: 
+        Winston.realm_completemessage_appear = False
         print("\n\nYou think you're starting to understand.\nThese realms, you can actually help people there." \
         "\nMaybe if you help enough people, you can get the courage to visit your home dimension..." \
         "\nYou have a new quest.\n")
         proceed()
+
+    if Winston.mw_available == False and Winston.q_available == False and Winston.p_available == False and Winston.pe_available == False:
+        Winston.home_available = True
+        print("\n\n...\n...\n...\nYou did it.\nYou helped at least one person in 4 completely different realms.\nYou think you have the courage to go back to your home dimension now.")
+
 
 def stats_page(Winston):
     if Winston.loops > 0:
@@ -295,29 +306,34 @@ def qilia(Winston):
     "\n\"Oooooh! Girls, there's another demon here to torture you! " \
     "Wait a second, this is no demon.\"\nTwo very surly looking teenage girls turn the corner and stare you down.")
     
-    print("What will you do?")
-
-    q_option1 = input("1. Run as fast as you can out of this basement.\n2. Attempt to fight\n3. ")
+    print("What will you do?\n\n")
+    proceed()
+    q_option1 = input("1. Run as fast as you can out of this basement.\n2. Attempt to fight\n3. Activate a ritual that summons Satan, Demon Overlord, to this world.\nHe will be at full infinite cosmic power, and fuse the Demon Realm with this mostly human populated planet."\
+    "\nThis will be the end of all joy in this world.\nWait, how did you even think of that?\n")
     print("\n")
     match q_option1:
         case "1":
-            print("\n\nYou run out of this basement.\nThe first thing you notice when you run out the front door is that the sky is PURPLE.\nThe entire horizon is blocked by a giant crater wall.\nWhere exactly IS this place?" \
-            "\nYou keep running, out into the harsh barren desert, where the ground is red sand.\nThere are monsters everywhere...\nYou see a white squirrel. It suddenly goes from blurry to clear.\nYou feel that your fate has been sealed.\n[THE FOLLOWING DEATH HAS BEEN CENSORED FOR BEING TOO HORRIFFIC]")
+            print("\n\nYou run out of the basement, the demon waving goodbye.\n\nThe first thing you notice when you run out the front door is that the sky is PURPLE.\nThe entire horizon is blocked by a giant crater wall.\nWhere exactly IS this place?" \
+            "\n\nYou keep running, out into the harsh barren desert, where the ground is red sand.\nThere are monsters everywhere...\nYou see a white squirrel. It suddenly goes from blurry to clear.\n\nYou feel that your fate has been sealed.\n\nSuddenly, a--\n[THE FOLLOWING DEATH HAS BEEN CENSORED FOR BEING TOO HORRIFFIC]\n")
             Winston.die()
         case "2":
-            print("You hold up your arms in fisticuffs")
-            q_finaloption = input("1. Go between the girls and try and fizzle out the conflict.\n2. Laugh obnoxiously and go \"FIGHT, FIGHT Little girls!\"")
+            print("You hold up your arms in fisticuffs. The older of the sisters sets herself on fire.\nYou wake up, and you are glued to the wall.\nThere are roped tied around your arms and leading to a big circle on the floor.\nIt seems these sadistic sisters are using you for some kind of spell.\n")
+            proceed()
+            print("The older one's name is Qatherine, and the younger Qaitlyn.\nThey seem like they're enjoying this ritual, almost in a cute way.\nEvery time the demon, Raymond, opens his mouth, the sisters' mood gets worse.")
+            q_finaloption = input("1. Go between the girls and try and fizzle out the conflict.\n2. Laugh obnoxiously and go on a villain monologue")
             print("\n")
             match q_finaloption:
                 case "1":
                     print("\"STOP FIGHTING!\"\nThe two sisters look blankly at you.\n\"C'mon, can't you guys just get along?\"")
-                case "2:":
+                case "2":
                     print("\nMWAHAHAHAHAHAHA!\nAs you bleed out, you hear one sister go, \"You're not bad.\"" \
                     "\nYou think, despite being killed, you did the right thing in this realm.")
                     Winston.die()
                     Winston.complete_realm(Winston.q_available)
                     Winston.q_available = False
-    
+        case "3":
+            print("Well... what you wanted to happen happens.\nI don't think that was the right choice, because you experienced a terrifying painful death.")
+            Winston.die()
     
     proceed()
 #Primordia. Help an engineer with her insecurity
@@ -329,8 +345,9 @@ def primordia(Winston):
     proceed()
     cowsay.trex("What are you doing here?")
     print("\nWhat do you do...?\n")
-    primordiachoice1 = input("1. I mean you no harm, sir!\n2. PLEASE HAVE MERCY!\n\n3. I'm a multiversal traveller from an entirely different plane of existence, and I \n4. [Run away screaming]")
-    print("It turns out, sometimes the best thing to do is let people sort it out.")
+    primordiachoice1 = input("1. I mean you no harm, sir!\n2. PLEASE HAVE MERCY!\n3. I'm a multiversal traveller from an entirely different plane of existence, and I'm here to explore you world.\n4. [Run away screaming]\n5. 6767676767676767")
+    
+    print("\nThe T-rex opens his giant mouth and swallows you whole. You get the stark feeling this would have been the conclusion no matter what you picked.\nYou d...\nWait, you're still alive.\nSomething about this dino's stomach acid isn't melting you immediately.")
     proceed()
 
     primordia_final_choice = input("1. \"I'm very sorry about that, Gilda.\"\n2. Slap her ungrateful self in the face.")
@@ -362,8 +379,8 @@ def padlocke(Winston):
             Winston.die()
         case "2":
             print("\n\nAdministration is... very interested in your appearence, but lets you through.\nIt turns out that Mrs. Baker's class has ZERO teachers right now.\nMrs. Baker is out, and her student teacher is swamped with finals.\nYou are very glad you are not swamped with finals.\n\nYou're warned that this is the \"gifted and talented\" class.\nYou're a bit confused. Shouldn't that mean that they should be easier to deal with?")
-            #proceed()
-            print("\nYou find a very long and organized binder for all... eight kids? How hard could eight kids be--\nYou were very wrong.\nRunning around, screaming, far too impassioned debates about children's cartoons...\nand one of the students is in the corner, in some partitioned \"Chill-Out Corral\". You see their description, and it seems like it's Michaela.\nIt's possible the other kids could use your attention.\nWhich student will you go to first?")
+            proceed()
+            print("\nIn the classroom, you find a very long and organized binder for all... eight kids? How hard could eight kids be--\nYou were very wrong.\nRunning around, screaming, far too impassioned debates about children's cartoons...\nand one of the students is in the corner, in some partitioned \"Chill-Out Corral\". You see their description, and it seems like it's Michaela.\nIt's possible the other kids could use your attention.\nWhich student will you go to first?")
             while michaelapicked == False:
                 padlockechoice2 = input("\n1. The boisterous and overconfident Cooper" \
                 "\n2. Levelheaded and \"alt\" Chloe" \
@@ -406,8 +423,6 @@ def padlocke(Winston):
                         print("When you approach the kid, he tilts his head.\n\"You know... you kinda look constipated.\"\nThe other kids stare at him.\n\"No he doesn't...?\" said Chloe.\nYou get such strong second-hand embarrasement that you wanna die.")
                 proceed()
     #nThis feels like the same place you were created in. The 'current' you, actually.
-
-    proceed()
 
 def home(Winston):
     in_loop = False
@@ -470,7 +485,7 @@ def main():
                 else:
                     print(already_completed_message)
             case "5":
-                if winston.home_avaiable == True:
+                if winston.home_available == True:
                     home(winston)
             case _:
                 print("Option not valid. You find yourself stretching to some unknown place in the universe...\nMaybe just pick one of the numbers given next time...\n")
