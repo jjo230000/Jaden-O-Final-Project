@@ -342,6 +342,8 @@ def primordia(Winston):
             "\nand you're here like a weepy willow sack of sand?")
             print("...")
             print("...")
+            Winston.complete_realm(Winston.p_available)
+            Winston.p_available = False
     proceed()
 #Padlocke. Talk to a bunch of eccentric children, and help a very sad one.
 def padlocke(Winston):
