@@ -8,14 +8,6 @@ import cowsay
 'meow', 'miki', 'milk', 'octopus', 'pig', 'stegosaurus', 'stimpy', 'trex', 
 'turkey', 'turtle', 'tux'] 
 """
-looping = False
-#checking if each realm is available. True means it's able to acessed, False means it isn't.
-mw = True
-q = True
-p = True
-pe = True
-#Going home won't be available until all realms are completed.
-home = False
 #Won't become false until the game ends.
 in_loop = True
 #If I want to change the message for any of the reals, I can just do it here
@@ -192,66 +184,6 @@ def stats_page(Winston):
 def proceed():
     input("Press Enter to continue.")
 
-def main():
-    #setting the character, Winston. All the default values suffice
-    winston = Character()
-    
-    #The Core Loop
-    while in_loop == True:
-        #At the start of every loop will be a line to signify the beginning
-        print("------------------------------------------------------------------------")
-        #Intro text, will change on certain conditions like loops passed through, or if at least one realm was completed
-        intro_text(winston)
-
-        #The Stats Page that comes before the dimension select screen, only appears if you've been through a loop at least a single time
-        stats_page(winston)
-
-        print(winston.mw_available)
-        #The core option
-        if winston.mw_available == True: 
-            print("1. Visit the bussling galactic metropolis, the Milky Way Galaxy")
-        if winston.q_available == True:
-            print("2. Journey to the cursed demon planet, Qilia")
-        if winston.p_available == True:
-            print("3. Go to the primitive gas giant Primordia")
-        if winston.pe_available == True:
-            print("4. Volunteer at the completely ordinary Padlocke Elementary School")
-        if winston.home_available == True:
-            print("5. Go... home?")
-        #Giving the player the core choice of the game
-        travel_choice = input("Which realm will you visit?\n\n")
-        
-        match travel_choice:
-            case "1":
-                if winston.mw_available == True:
-                    milkyway(winston)
-                else:
-                    print(already_completed_message)
-                    continue
-            case "2":
-                if winston.q_available == True:
-                    qilia(winston)
-                else:
-                    print(already_completed_message)
-            case "3":
-                if winston.p_available == True:
-                    primordia(winston)
-                else:
-                    print(already_completed_message)
-            case "4":
-                if winston.pe_available == True:
-                    padlocke(winston)
-                else:
-                    print(already_completed_message)
-            case "5":
-                if winston.home_avaiable == True:
-                    home(winston)
-            case _:
-                print("Option not valid. You find yourself stretching to some unknown place in the universe...\nMaybe just pick one of the numbers given next time...\n")
-                input("Press Enter to continue.")
-        #add another to the loop counter
-        winston.loops += 1
-
 
 def milkyway(Winston):
     print(milkywaylogo)
@@ -337,11 +269,12 @@ def primordia(Winston):
     "Endless sky, actually." \
     "\nIt goes down endlessly, with other islands dotting the landscap")
 
-    input("Press Enter to continue.")
+    proceed()
 
     cowsay.trex("What are you doing here?")
-
-    input("Press Enter to continue.")
+    
+    print("It turns out, sometimes the best thing to do is let people sort it out.")
+    proceed()
 
 def padlocke(Winston):
     michaelapicked = False 
@@ -357,8 +290,7 @@ def padlocke(Winston):
         case "2":
             print("\n\nAdministration is... very interested in your appearence, but lets you through.\nIt turns out that Mrs. Baker's class has ZERO teachers right now.\nMrs. Baker is out, and her student teacher is swamped with finals.\nYou are very glad you are not swamped with finals.\n\nYou're warned that this is the \"gifted and talented\" class.\nYou're a bit confused. Shouldn't that mean that they should be easier to deal with?")
             #proceed()
-            print("\nYou find a very long and organized binder for all... eight kids? How hard could eight kids be--\nYou were very wrong.\nRunning around, screaming, far too impassioned debates about children's cartoons...\nand one of the students is in the corner. You see their description, and it seems like it's Michaela.\n\nWhich student will you go to first?")
-            
+            print("\nYou find a very long and organized binder for all... eight kids? How hard could eight kids be--\nYou were very wrong.\nRunning around, screaming, far too impassioned debates about children's cartoons...\nand one of the students is in the corner, in some partitioned \"Chill-Out Corral\". You see their description, and it seems like it's Michaela.\nIt's possible the other kids could use your attention.\nWhich student will you go to first?")
             while michaelapicked == False:
                 padlockechoice2 = input("\n1. The boisterous and overconfident Cooper" \
                 "\n2. Levelheaded and \"alt\" Chloe" \
@@ -370,9 +302,9 @@ def padlocke(Winston):
                 print("\n\n")
                 match padlockechoice2:
                     case "1":
-                        print("\"Sooooooo, how many lambos you got?\"")
+                        print("\"Sooooooo, how many lambos you got?\"\nThe binder warned you about Cooper.\nA very showy boy.\n\"My online mentor said that if I meet an older man and he doesn't make at least 6 figures, he's not worth my time. Considering that you're working as a substitue teacher... you're probably a cuck.\"\n\nOkay, that's enough. Next kid.")
                     case "2":
-                        print("Chloe was flipping throw a tween fashion magazine, \"Riot\"")
+                        print("Chloe was flipping throw a tween fashion magazine, \"Riot\".\n\"So, do you have jaundice?\"\n\"Yes, I do, little lady.\"\n\"Cool,\" is all she says before flipping through her magazine again.\nApparently, jaundice is cool.  Duly noted.")
                     case "3":
                         print("The kid swishes his hair." \
                         "\n\"You look like you'd enjoy the series Neon Genesis Evangelion, sir.\nYou're obviously going through an existential crisis.\"" \
@@ -383,15 +315,20 @@ def padlocke(Winston):
                         "\n\nYou recoil.\n\n\"Oh, Micah's just trying to get a reaction out of you,\" " \
                         "Augustine, his friend, said.\n\nReaction gotten.\nMaybe it's best to check on a different kid...")
                     case "5":
-                        print("")
+                        print("You approach a girl who has the thickest book you've ever seen, along with a neat stack of a bunch of math homework.\n\"Would you like ot double-check my calculus problems? Just something I did for fun.\"\n\"I, uh, never did calculus in high school.\"\n\"Well, can I at leats give you a lore dump of Braden Sandman's fantasy-sci fi universe?\" She hoolds up the ginormous book.\nAfter 2 hours, you know a lot more about the subatomic physics than you thought you'd ever know.\nOkay, next kid.")
                     case "6":
-                        print("You enter the \"Chill-Out Corral\".\nThe girl seems very uncomfortable with a random adult")
                         michaelapicked = True
+                        print("You enter the \"Chill-Out Corral\".\nThe girl seems very uncomfortable with a random adult entering this space.\nYou decide just say \"are you okay?\"")
+                        print("The girl looks of to the side. \"Not really.\"")
                         proceed()
+                        print("\n\"Sometimes I feel... weird. I'm happy, then suddenly I'm not. I like how things are now, mostly, but it's not gonna be like that forver.\nSoon I'm gonna havta learn how to pay taxes, and be depressed because I'm an adult, and I'll never have fun until I'm 75 but by then I'll have arthritis and not be able to move, or something.\nAnd then I'll just watch old cartoons all day. And then die.\"")
+                        proceed()
+                        print("You're not sure of what to say at first.\n\"Getting older's not that bad. You'll have new things you can be grateful for, like greater freedom.\nI guess it's not all sunshine and rainbows, but you get to drive Wiggle Wagglez and have Guys Nights and go out into space...\nAt least, that's what I did.\"")
+                        print("The girl looks very curious, and a bit delighted, so you deciede to tell her some tales of your life.\nAfter a while, she seems to feel just a bit better.\nThe clock strikes 3:00 pm and all the kdis go home.\nIt's time to for you to go... well, not home, but back to the liminal space.\n")
                         Winston.complete_realm(Winston.pe_available)
-                        Winston.pe_availavle = False
+                        Winston.pe_available = False
                     case "7":
-                        print("")
+                        print("The braided girl has dozens of papers surrounding her.\n\"Can you help me with this 9th grade Algebra? I need to compete with Erin.\"\nYou took a look at the papers. Math was never your strong suit. You shrug at her.\n\"Then you're USELESS to me.\"\nOkay, then.")
                     case "8":
                         print("When you approach the kid, he tilts his head.\n\"You know... you kinda look constipated.\"\nThe other kids stare at him.\n\"No he doesn't...?\" said Chloe.\nYou get such strong second-hand embarrasement that you actually just die.")
                 proceed()
@@ -403,6 +340,67 @@ def home(Winston):
     print("...gulp.")
     proceed()
     print("You've learned so much through your journey through this strange, vast multiverse.\nYou learned that it's never too late to redeem yourself.\nBonds that have been sour for long don't have to stay that way.\n\nAnd growing up is... okay.")
+
+def main():
+    #setting the character, Winston. All the default values suffice
+    winston = Character()
+    
+    #The Core Loop
+    while in_loop == True:
+        #At the start of every loop will be a line to signify the beginning
+        print("------------------------------------------------------------------------")
+        #Intro text, will change on certain conditions like loops passed through, or if at least one realm was completed
+        intro_text(winston)
+
+        #The Stats Page that comes before the dimension select screen, only appears if you've been through a loop at least a single time
+        stats_page(winston)
+
+        print(winston.mw_available)
+        #The core option
+        if winston.mw_available == True: 
+            print("1. Visit the bussling galactic metropolis, the Milky Way Galaxy")
+        if winston.q_available == True:
+            print("2. Journey to the cursed demon planet, Qilia")
+        if winston.p_available == True:
+            print("3. Go to the primitive gas giant Primordia")
+        if winston.pe_available == True:
+            print("4. Volunteer at the completely ordinary Padlocke Elementary School")
+        if winston.home_available == True:
+            print("5. Go... home?")
+        #Giving the player the core choice of the game
+        travel_choice = input("Which realm will you visit?\n\n")
+        
+        match travel_choice:
+            case "1":
+                if winston.mw_available == True:
+                    milkyway(winston)
+                else:
+                    print(already_completed_message)
+                    continue
+            case "2":
+                if winston.q_available == True:
+                    qilia(winston)
+                else:
+                    print(already_completed_message)
+            case "3":
+                if winston.p_available == True:
+                    primordia(winston)
+                else:
+                    print(already_completed_message)
+            case "4":
+                if winston.pe_available == True:
+                    padlocke(winston)
+                else:
+                    print(already_completed_message)
+            case "5":
+                if winston.home_avaiable == True:
+                    home(winston)
+            case _:
+                print("Option not valid. You find yourself stretching to some unknown place in the universe...\nMaybe just pick one of the numbers given next time...\n")
+                input("Press Enter to continue.")
+        #add another to the loop counter
+        winston.loops += 1
+
 
 if __name__ == "__main__":
     main()
