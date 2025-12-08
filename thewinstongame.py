@@ -146,7 +146,7 @@ def intro_text(Winston):
     elif Winston.loops == 1:
         if Winston.realms_completed == 0:
             print("\n\n\nYou're a man.\nYou're a... what a second. You've been here before.")
-            print(logo2)
+            print(logo3)
             proceed()
     elif Winston.loops == 2:
         if Winston.realms_completed == 0:
@@ -184,7 +184,8 @@ def stats_page(Winston):
 def proceed():
     input("Press Enter to continue.")
 
-
+#The four realms, and the final ending realm.
+#Milky Way. Interact with a motley crew. Talk to a wayward starchild, and encourage him to give himself another chance
 def milkyway(Winston):
     print(milkywaylogo)
     print("\nYou find yourself spawned in the middle of outer space.\nYou've done this whole space thing before, many times." \
@@ -256,30 +257,43 @@ def milkyway(Winston):
             
 
     input("Press Enter to continue.")
-
+#Qilia. Help two sisters grow closer.
 def qilia(Winston):
     print(qilialogo)
-    print("You feel an overwhelming sense of dread and despair.\nIs this what the presense of demons feel like?\nAfter you stop yourself from throwing up, you find yourslf in a basement.\nThere are multiple bookshelves filled with potions, spellbooks, and wands.\n\"Ooh! Girls, there's another demon here to torture you! Wait a second, this is no demon.\"\nTwo very surly looking teenage girls turn the corner and stare you down.")
+    print("You feel an overwhelming sense of dread and despair.\nIs this what the presense of demons feel like?\nAfter you stop yourself from throwing up, you find yourslf in a basement.\nThere are multiple bookshelves filled with potions, spellbooks, and wands." \
+    "\n\"Oooooh! Girls, there's another demon here to torture you! " \
+    "Wait a second, this is no demon.\"\nTwo very surly looking teenage girls turn the corner and stare you down.")
     
-    input("Press Enter to continue.")
+    q_finaloption = input("1. Go between the girls and try and fizzle out the conflict.\n2. Laugh obnoxiously and go \"FIGHT, FIGHT Little girls!\"")
 
+    match q_finaloption:
+        case "2:":
+            print("\nAs you bleed out, you hear one sister go, \"You're not bad.\"\nYou think, despite being killed, you did the right thing in this realm.")
+            Winston.die()
+            Winston.complete_realm(Winston.q_available)
+            Winston.q_available = False
+    
+    proceed()
+#Primordia.
 def primordia(Winston):
     print(primordialogo)
     print("You're in a lush jungle.\nYou look over the edge of this island and you see bright skies. " \
     "Endless sky, actually." \
-    "\nIt goes down endlessly, with other islands dotting the landscap")
-
+    "\nIt goes down endlessly, with other islands dotting the landscape.\nSuddenly, a large shadow looms over you.\nYou turn around and a giant Tyrannosaurus Rex is staring you down.")
     proceed()
-
     cowsay.trex("What are you doing here?")
-    
+    print("\nWhat do you do...?\n")
+    primordiachoice1 = input("1. I mean you no harm, sir!\n2. PLEASE HAVE MERCY!\n\n3. I'm a multiversal traveller from an entirely different plane of existence, and I \n4. [Run away screaming]")
     print("It turns out, sometimes the best thing to do is let people sort it out.")
     proceed()
-
+#Padlocke. Talk to a bunch of eccentric children, and help a very sad one.
 def padlocke(Winston):
     michaelapicked = False 
     print(padlockelogo)
-    print("\nYou spawn right outside an elementary school with a statue of a giant smiling cartoon penguin.\nWait a minute, they're not gonna let you in the building as some random dude.\nYou look around, and realize that everyone seems like a normal human in this world.\nThis gives you two options.")
+    print("\nYou spawn right outside an elementary school with a statue of a giant smiling cartoon penguin. It has a sign that reads:")
+    cowsay.tux("Paddy the Padlocke Penguin welcomes you to\nPadlocke Elementary School!")
+    proceed()
+    print("Wait a minute, they're not gonna let you in the building as some random dude.\nYou look around, and realize that everyone seems like a normal human in this world.\nThis gives you two options.")
     padlockechoice1 = input("1. Pass yourself off as a colorful mascot entertainer\n2. Register as a substitute teacher and just tell everyone you have jaundice\n")
 
     print("\n")
@@ -298,39 +312,39 @@ def padlocke(Winston):
                 "\n4. Silent but mischevious Micah" \
                 "\n5. Introvert and general nerd Erin" \
                 "\n6. (Usually) extrememly energetic Michaela" \
-                "\n7. Studious and just a tad stuck-up Aashvi\n8. Self-described class clown Jesse")
+                "\n7. Studious and just a tad stuck-up Aashvi\n8. Self-described class clown Jesse\n\n")
                 print("\n\n")
                 match padlockechoice2:
                     case "1":
-                        print("\"Sooooooo, how many lambos you got?\"\nThe binder warned you about Cooper.\nA very showy boy.\n\"My online mentor said that if I meet an older man and he doesn't make at least 6 figures, he's not worth my time. Considering that you're working as a substitue teacher... you're probably a cuck.\"\n\nOkay, that's enough. Next kid.")
+                        print("\"Sooooooo, how many lambos you got?\"\nThe binder warned you about Cooper.\nA very showy boy.\n\"My online mentor said that if I meet an older man and he doesn't make at least 6 bands, he's not worth my time.\nConsidering that you're working as a substitue teacher... you're probably a cuck.\"\n\nOkay, that's enough. Next kid.")
                     case "2":
-                        print("Chloe was flipping throw a tween fashion magazine, \"Riot\".\n\"So, do you have jaundice?\"\n\"Yes, I do, little lady.\"\n\"Cool,\" is all she says before flipping through her magazine again.\nApparently, jaundice is cool.  Duly noted.")
+                        print("Chloe was flipping throw a tween fashion magazine, \"Riot\".\n\"So, do you have jaundice?\"\n\"Yes, I do, little lady.\"\n\"Cool,\" is all she says before flipping through her magazine again.\nApparently, jaundice is cool. Duly noted.")
                     case "3":
                         print("The kid swishes his hair." \
                         "\n\"You look like you'd enjoy the series Neon Genesis Evangelion, sir.\nYou're obviously going through an existential crisis.\"" \
-                        "His silent friend, Micah, nods.\nYou decide to watch it for yourself.\nBy time you finish The End of Evangelion you're genuinely too depressed to wanna do anything.\n")
+                        "\nHis silent friend, Micah, nods.\nYou decide to watch it for yourself.\nBy time you finish The End of Evangelion you're genuinely too depressed to wanna do anything.\n")
                     case "4":
                         print("Micah looks at you with his large innocnet eyes." \
-                        "\nYou read on the binder that he's semiverbal and communicatess with drawings. How cute!\nMicah shows you a drawing of...\na yellow man...\nwith his eyes pecked out and his intestines exposed while seagulls flying above him" \
+                        "\nYou read on the binder that he's semiverbal and communicatess with drawings. How cute!\nMicah shows you a drawing of...\na yellow man...\nwith his eyes pecked out and his intestines exposed, with while seagulls flying above him." \
                         "\n\nYou recoil.\n\n\"Oh, Micah's just trying to get a reaction out of you,\" " \
                         "Augustine, his friend, said.\n\nReaction gotten.\nMaybe it's best to check on a different kid...")
                     case "5":
-                        print("You approach a girl who has the thickest book you've ever seen, along with a neat stack of a bunch of math homework.\n\"Would you like ot double-check my calculus problems? Just something I did for fun.\"\n\"I, uh, never did calculus in high school.\"\n\"Well, can I at leats give you a lore dump of Braden Sandman's fantasy-sci fi universe?\" She hoolds up the ginormous book.\nAfter 2 hours, you know a lot more about the subatomic physics than you thought you'd ever know.\nOkay, next kid.")
+                        print("You approach a girl who has the thickest book you've ever seen, along with a neat stack of a bunch of math homework.\n\"Would you like to double-check my calculus problems? Just something I did for fun.\"\n\"I, uh, never did calculus in high school.\"\n\"Well, can I at least give you a lore dump of Braden Sandman's fantasy-sci fi universe?\" She hoolds up the ginormous book.\nAfter 2 hours, you know a lot more about subatomic physics than you thought you'd ever know.\nOkay, next kid.")
                     case "6":
                         michaelapicked = True
                         print("You enter the \"Chill-Out Corral\".\nThe girl seems very uncomfortable with a random adult entering this space.\nYou decide just say \"are you okay?\"")
                         print("The girl looks of to the side. \"Not really.\"")
                         proceed()
-                        print("\n\"Sometimes I feel... weird. I'm happy, then suddenly I'm not. I like how things are now, mostly, but it's not gonna be like that forver.\nSoon I'm gonna havta learn how to pay taxes, and be depressed because I'm an adult, and I'll never have fun until I'm 75 but by then I'll have arthritis and not be able to move, or something.\nAnd then I'll just watch old cartoons all day. And then die.\"")
+                        print("\n\"Sometimes I feel... weird. I'm happy, then suddenly I'm not.\nI like how things are now, mostly, but it's not gonna be like that forver.\nSoon I'm gonna havta learn how to pay taxes, and be depressed because I'm an adult,\nand I'll never have fun until I'm 75 but by then I'll have arthritis and not be able to move, or something.\nAnd then I'll just watch old cartoons all day. And then die.\"")
                         proceed()
-                        print("You're not sure of what to say at first.\n\"Getting older's not that bad. You'll have new things you can be grateful for, like greater freedom.\nI guess it's not all sunshine and rainbows, but you get to drive Wiggle Wagglez and have Guys Nights and go out into space...\nAt least, that's what I did.\"")
-                        print("The girl looks very curious, and a bit delighted, so you deciede to tell her some tales of your life.\nAfter a while, she seems to feel just a bit better.\nThe clock strikes 3:00 pm and all the kdis go home.\nIt's time to for you to go... well, not home, but back to the liminal space.\n")
+                        print("You're not sure of what to say at first.\n\"Getting older's not that bad. You'll have new things you can be grateful for, like greater freedom.\nI guess it's not all sunshine and rainbows,\nbut you get to drive Wiggle Wagglez and have Guys Nights and gamble and mess up lotteries and go out into space and blow stuff up...\nAt least, that's what I did.\"")
+                        print("The girl looks very curious, and a bit delighted, so you deciede to tell her some tales of your life.\nAfter a while, she seems to feel just a bit better.\nThe clock strikes 3:00 pm and all the kids go home.\nIt's time to for you to go... well, not home, but back to the liminal space.\n")
                         Winston.complete_realm(Winston.pe_available)
                         Winston.pe_available = False
                     case "7":
                         print("The braided girl has dozens of papers surrounding her.\n\"Can you help me with this 9th grade Algebra? I need to compete with Erin.\"\nYou took a look at the papers. Math was never your strong suit. You shrug at her.\n\"Then you're USELESS to me.\"\nOkay, then.")
                     case "8":
-                        print("When you approach the kid, he tilts his head.\n\"You know... you kinda look constipated.\"\nThe other kids stare at him.\n\"No he doesn't...?\" said Chloe.\nYou get such strong second-hand embarrasement that you actually just die.")
+                        print("When you approach the kid, he tilts his head.\n\"You know... you kinda look constipated.\"\nThe other kids stare at him.\n\"No he doesn't...?\" said Chloe.\nYou get such strong second-hand embarrasement that you wanna die.")
                 proceed()
     #nThis feels like the same place you were created in. The 'current' you, actually.
 
@@ -339,7 +353,10 @@ def padlocke(Winston):
 def home(Winston):
     print("...gulp.")
     proceed()
-    print("You've learned so much through your journey through this strange, vast multiverse.\nYou learned that it's never too late to redeem yourself.\nBonds that have been sour for long don't have to stay that way.\n\nAnd growing up is... okay.")
+    print("You've learned so much through your journey through this strange, vast multiverse." \
+    "\nYou learned that it's never too late to redeem yourself." \
+    "\nBonds that have been sour for long don't have to stay that way." \
+    "\n\nAnd growing up is... okay.")
 
 def main():
     #setting the character, Winston. All the default values suffice
