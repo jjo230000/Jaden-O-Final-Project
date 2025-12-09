@@ -1,7 +1,3 @@
-from pyfiglet import figlet_format
-import pyfiglet
-import pygame
-import random
 import cowsay
 """
 ['beavis', 'cheese', 'cow', 'daemon', 'dragon', 'fox', 'ghostbusters', 'kitty',
