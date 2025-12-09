@@ -143,6 +143,7 @@ class Character():
         self.home_available = False
         #Makes it so that the messgae of "you have a new quest" only appears on single time
         self.realm_completemessage_appear = True
+        self.in_loop = True
     #Every path that leads to a death uses this function
     def die(self):
         self.deaths += 1
@@ -192,6 +193,7 @@ def intro_text(Winston):
     if Winston.mw_available == False and Winston.q_available == False and Winston.p_available == False and Winston.pe_available == False:
         Winston.home_available = True
         print("\n\n...\n...\n...\nYou did it.\nYou helped at least one person in 4 completely different realms.\nYou think you have the courage to go back to your home dimension now.")
+        proceed()
 
 
 def stats_page(Winston):
@@ -263,7 +265,7 @@ def milkyway(Winston):
                             Winston.die()
                         case "2":
                             print("\nYou kick off the ship and see the surroundings for yourself.\nOuter space feels red, for some reason.\nYou drift along, not seeing much except for...\nis that a human teenager, sitting on an asteroid? No spacesuit?\nUnless he's also trancending reality like you, this shouldn't be happenning.\nYou have to approach this kid, maybe he has something to do with\nwhat's been happening to the Milky Way")
-                            mwchoice4 = input("\n1. Hey, buddy. Don't worry, I'm not gonna hurt ya. I just wanna talk.\n2. Man, when was the last time you ate?\n3. [BRAAAAAAAAAAAAAAAAAP]\n4. [Say nothing, approach silently]")
+                            mwchoice4 = input("\n1. Hey, buddy. Don't worry, I'm not gonna hurt ya. I just wanna talk.\n2. Man, when was the last time you ate?\n3. [BRAAAAAAAAAAAAAAAAAP]\n4. [Say nothing, approach silently]\n")
                             match mwchoice4:
                                 case "1" | "2" | "3":
                                     print("\nHe casually lifts his hand.\nA giant beam of pure darkness larger than a house shoots out.\nYou're hit with the most overwhelming power you've ever felt.\nThis kid is certainly important, and you'd love to find out more, but now you are dead.\nLike, very, very dead.")
@@ -317,16 +319,19 @@ def qilia(Winston):
             "\n\nYou keep running, out into the harsh barren desert, where the ground is red sand.\nThere are monsters everywhere...\nYou see a white squirrel. It suddenly goes from blurry to clear.\n\nYou feel that your fate has been sealed.\n\nSuddenly, a--\n[THE FOLLOWING DEATH HAS BEEN CENSORED FOR BEING TOO HORRIFFIC]\n")
             Winston.die()
         case "2":
-            print("You hold up your arms in fisticuffs. The older of the sisters sets herself on fire.\nYou wake up, and you are glued to the wall.\nThere are roped tied around your arms and leading to a big circle on the floor.\nIt seems these sadistic sisters are using you for some kind of spell.\n")
+            print("You hold up your arms in fisticuffs. The older of the sisters sets effortlessly herself on fire. You are very quickly incapacitated.")
             proceed()
-            print("The older one's name is Qatherine, and the younger Qaitlyn.\nThey seem like they're enjoying this ritual, almost in a cute way.\nEvery time the demon, Raymond, opens his mouth, the sisters' mood gets worse.")
-            q_finaloption = input("1. Go between the girls and try and fizzle out the conflict.\n2. Laugh obnoxiously and go on a villain monologue")
+            print("\nYou wake up, and you are glued to the wall.\nThere are ropes tied around your arms and leading to a big circle on the floor.\nIt seems these sadistic sisters are using you and your quite literally otherworldly body for some kind of spell.\n")
+            proceed()
+            print("\n\nYou learn a few things about them.\nThe older one's name is Qatherine, and the younger Qaitlyn.\nThey seem like they're enjoying this ritual, almost in a cute way.\nThey start off working in silence, but slowly start talking with each other more." \
+            "\n\nThey're relationship seems a bit tenuos. You sense a slight bit of tension between them.\n What makes it worse is Raymond, the demon. Every time the demon opens his mouth, the sisters' mood gets worse.\nYou get the impression that Raymond is doing it intentionally.\n\n\"\"")
+            q_finaloption = input("1. Go between the girls and try and fizzle out the conflict.\n2. Laugh obnoxiously and go on a villain monologue\n")
             print("\n")
             match q_finaloption:
                 case "1":
-                    print("\"STOP FIGHTING!\"\nThe two sisters look blankly at you.\n\"C'mon, can't you guys just get along?\"")
+                    print("\"STOP FIGHTING!\"\nThe two sisters look blankly at you.\n\"C'mon, can't you guys just get along?\"\n\nThe two of them stare at you.\"Soooo, what are you trying to say?\" Qaitlyn said.\n\n\"I, uh... I dunno. I guess what I just \"")
                 case "2":
-                    print("\nMWAHAHAHAHAHAHA!\nAs you bleed out, you hear one sister go, \"You're not bad.\"" \
+                    print("\n\"MWAHAHAHAHAHAHA!\nLITTLE DO YOU LITTLE GIRLS KNOW, ME AND MY BEST BUDDY RAYMOND HERE ARE SLOWLY CORRODING YOUR ALREADY SHAKY RELATIONSHIP!\n\"\nAs you bleed out, you hear one sister go, \"You're not bad.\"" \
                     "\nYou think, despite being killed, you did the right thing in this realm.")
                     Winston.die()
                     Winston.complete_realm(Winston.q_available)
@@ -347,9 +352,13 @@ def primordia(Winston):
     print("\nWhat do you do...?\n")
     primordiachoice1 = input("1. I mean you no harm, sir!\n2. PLEASE HAVE MERCY!\n3. I'm a multiversal traveller from an entirely different plane of existence, and I'm here to explore you world.\n4. [Run away screaming]\n5. 6767676767676767")
     
-    print("\nThe T-rex opens his giant mouth and swallows you whole. You get the stark feeling this would have been the conclusion no matter what you picked.\nYou d...\nWait, you're still alive.\nSomething about this dino's stomach acid isn't melting you immediately.")
+    print("\nThe T-rex opens his giant mouth and swallows you whole. You get the stark feeling this would have been the conclusion no matter what you picked.\nYou d...\nWait, you're still alive.\nSomething about this dino's stomach acid isn't melting you immediately.\n")
     proceed()
 
+    print("\nThe T-Rex enters a flying ship. You can hear all the wrrs of the place.\nYou hear various voices.\n\"Hiiiiii, Rock! Can we do super cool muscle training soon?\"\n\"Rock, we're going to Salasaquam Island in 0800 hours, just thought you'd want to know.\"" \
+          "\n\"Hey, uh... Rock. Could you enter my lab with me for a sec?\"\n \"Rock follows this voice.\"")
+    proceed()
+    print("\"What's up?\" Rock rumbles.\n\"Well, I've had a lot on my mind.\"")
     primordia_final_choice = input("1. \"I'm very sorry about that, Gilda.\"\n2. Slap her ungrateful self in the face.")
     match primordia_final_choice:
         case "1":
@@ -421,26 +430,36 @@ def padlocke(Winston):
                         print("The braided girl has dozens of papers surrounding her.\n\"Can you help me with this 9th grade Algebra? I need to compete with Erin.\"\nYou took a look at the papers. Math was never your strong suit. You shrug at her.\n\"Then you're USELESS to me.\"\nOkay, then.")
                     case "8":
                         print("When you approach the kid, he tilts his head.\n\"You know... you kinda look constipated.\"\nThe other kids stare at him.\n\"No he doesn't...?\" said Chloe.\nYou get such strong second-hand embarrasement that you wanna die.")
-                proceed()
+                input("Press Enter onne more time to get back out there.")
     #nThis feels like the same place you were created in. The 'current' you, actually.
 
 def home(Winston):
-    in_loop = False
+    Winston.in_loop = False
     print("...gulp.")
     proceed()
     print("You've learned so much through your journey through this strange, vast multiverse." \
     "\nYou learned that it's never too late to redeem yourself." \
     "\nBonds that have been sour for long don't have to stay that way." \
     "\n\nAnd growing up is... okay.")
-
-    endlogo()
+    proceed()
+    print("You go back to your old town.\nSince the Kate-Marcimus Empire was defeated by you, things have gotten better." \
+    "\nYou pay a visit to your old friend Michael Theque Whytman's grave.\n\"I hope that other Michael's as weird as you were.\"")
+    proceed()
+    print("You go to Hopper's old house. You missed him--her?!")
+    proceed()
+    print("Pinky.\n\"Hey.\"\n\"Hey.\"\n...\"You look happier,\" Pinky says.\n\"You, too,\" you say.")
+    proceed()
+    print("Well, that's enough. You're thinking that you could go back out there.")
+    proceed()
+    print(endlogo)
 
 def main():
     #setting the character, Winston. All the default values suffice
     winston = Character()
     
+    
     #The Core Loop
-    while in_loop == True:
+    while winston.in_loop == True:
         #At the start of every loop will be a line to signify the beginning
         print("------------------------------------------------------------------------")
         #Intro text, will change on certain conditions like loops passed through, or if at least one realm was completed
@@ -487,6 +506,7 @@ def main():
             case "5":
                 if winston.home_available == True:
                     home(winston)
+                    #in_loop = False
             case _:
                 print("Option not valid. You find yourself stretching to some unknown place in the universe...\nMaybe just pick one of the numbers given next time...\n")
                 input("Press Enter to continue.")
