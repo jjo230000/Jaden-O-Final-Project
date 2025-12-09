@@ -9,11 +9,11 @@ This will be "The Winston Game", a text-based adventure game based on an old ser
 
 ## Features
 - Feature 1
-	- The game will involve branching paths
+	- The game will involve branching paths, the course of the story will change based on your choices
 - Feature 2
 	- Occasional images will be shown based on your scenarios, whether it's with text art or rendered in pygame
 - Feature 3
-	- Ability to quit the game any time be pressing "Q"
+	- The game itself will loop over and over, until the correct pathways are chosen
    
 ## Challenges
 - Efficient branching paths -- a lot of different scenarios will be explored, like 
