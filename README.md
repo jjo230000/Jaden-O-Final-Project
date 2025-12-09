@@ -1,7 +1,7 @@
 # THE WINSTON GAME
 
 ## Demo
-Demo Video: <URL>
+Demo Video: https://youtu.be/l5fR63fMdTA
 
 ## GitHub Repository
 GitHub Repo: https://github.com/jjo230000/Jaden-O-Final-Project.git
