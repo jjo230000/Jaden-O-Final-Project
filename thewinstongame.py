@@ -324,15 +324,18 @@ def qilia(Winston):
             print("\nYou wake up, and you are glued to the wall.\nThere are ropes tied around your arms and leading to a big circle on the floor.\nIt seems these sadistic sisters are using you and your quite literally otherworldly body for some kind of spell.\n")
             proceed()
             print("\n\nYou learn a few things about them.\nThe older one's name is Qatherine, and the younger Qaitlyn.\nThey seem like they're enjoying this ritual, almost in a cute way.\nThey start off working in silence, but slowly start talking with each other more." \
-            "\n\nThey're relationship seems a bit tenuos. You sense a slight bit of tension between them.\n What makes it worse is Raymond, the demon. Every time the demon opens his mouth, the sisters' mood gets worse.\nYou get the impression that Raymond is doing it intentionally.\n\n\"\"")
+            "\n\nThey're relationship seems a bit tenuos. You sense a slight bit of tension between them.\n\nWhat makes it worse is Raymond, the demon. Every time the demon opens his mouth, the sisters' mood gets worse.\nYou get the impression that Raymond is doing it intentionally, to increase their suffering.\nHe seems to *enjoy* it.\nIt would only make sense, as a demon.\n\nYou feel that you should say something to them.\nWhat will you say?")
             q_finaloption = input("1. Go between the girls and try and fizzle out the conflict.\n2. Laugh obnoxiously and go on a villain monologue\n")
             print("\n")
             match q_finaloption:
                 case "1":
-                    print("\"STOP FIGHTING!\"\nThe two sisters look blankly at you.\n\"C'mon, can't you guys just get along?\"\n\nThe two of them stare at you.\"Soooo, what are you trying to say?\" Qaitlyn said.\n\n\"I, uh... I dunno. I guess what I just \"")
+                    print("\"STOP FIGHTING!\"\nThe two sisters look blankly at you.\n\"C'mon, can't you guys just get along?\"\n\nThe two of them stare at you.\n\"Soooo, what are you trying to say?\" Qaitlyn said.\n\n\"I, uh... I dunno. I guess what I just...\"")
+                    print("You literally die of awkwardness.")
+                    Winston.die()
                 case "2":
-                    print("\n\"MWAHAHAHAHAHAHA!\nLITTLE DO YOU LITTLE GIRLS KNOW, ME AND MY BEST BUDDY RAYMOND HERE ARE SLOWLY CORRODING YOUR ALREADY SHAKY RELATIONSHIP!\n\"\nAs you bleed out, you hear one sister go, \"You're not bad.\"" \
-                    "\nYou think, despite being killed, you did the right thing in this realm.")
+                    print("\n\"MWAHAHAHAHAHAHA!\nLITTLE DO YOU LITTLE GIRLS KNOW, ME AND MY BEST BUDDY RAYMOND HERE ARE SLOWLY CORRODING YOUR ALREADY SHAKY RELATIONSHIP!\n\nThey stare at you blankly.\nSuddenly, the floor glows yellow. Their spell must have completed.\nQaitlyn smiled. \"It seems that we have gained acess to an all new Arcane Element: *YELLOW*.\"\n\"I think I know just who to test it on,\" Qatherine said, smiling.\nThe two sisters' hands glow yellow, and you're shot was a concentrated beam of yourself." \
+                    "\n\nAs you bleed out, you hear one sister go, \"Good job, Qaitlyn. I felt some synergy there.\nDon't think we're not doing this to you too, Raymond.\"" \
+                    "\nYou think, despite being killed, you did the right thing in this realm.\nYou gave two sisters a small bonding moment.\nSometimes, a small nudge is all a strained relationship needs.")
                     Winston.die()
                     Winston.complete_realm(Winston.q_available)
                     Winston.q_available = False
@@ -356,18 +359,21 @@ def primordia(Winston):
     proceed()
 
     print("\nThe T-Rex enters a flying ship. You can hear all the wrrs of the place.\nYou hear various voices.\n\"Hiiiiii, Rock! Can we do super cool muscle training soon?\"\n\"Rock, we're going to Salasaquam Island in 0800 hours, just thought you'd want to know.\"" \
-          "\n\"Hey, uh... Rock. Could you enter my lab with me for a sec?\"\n \"Rock follows this voice.\"")
+          "\n\"Hey, uh... Rock. Could you enter my lab with me for a sec?\"\nRock follows this voice.")
     proceed()
-    print("\"What's up?\" Rock rumbles.\n\"Well, I've had a lot on my mind.\"")
+    print("\"What's up?\" Rock rumbles.\n\"Well, I've had a lot on my mind. I just feel so out of place. Maria is so kind, but I'm just a dissapointment.\nI'm thinking I should just leave everyone. They don't need me.\"\n\nRock tilts his head.\n\"Hm. Well, food always makes me feel better. Here.\"" \
+    "\nRock regurgitates you onto the floor.\nYou splat onto a cold metal floor.\nYou look eyes with an awkward looking gecko lady.\n\n")
     primordia_final_choice = input("1. \"I'm very sorry about that, Gilda.\"\n2. Slap her ungrateful self in the face.")
     match primordia_final_choice:
         case "1":
-            print("")
+            print("\n\"Ew,\" Gilda says. Rock swallow this thing back up and clean my floor of your saliva... Please.\nRock does just that, and you end up back in his stomach.\nSlowly, but surely, over the course of hours, you are digested to nothing but bone.")
+            Winston.die()
         case "2":
             print("*SMACK*\n\"So you're telling me, you have a fulfilling job as an engineer,\na family that takes you in and loves you, including children that look up to you," \
-            "\nand you're here like a weepy willow sack of sand?")
-            print("...")
-            print("...")
+            "\nand you're thinking about just leaving it all behind? You can't! You couldn't!\"\n...\n...\nThe lizard lady rubs her cheek.\n\"Projection, much?\"\n\n\"I... wow. I guess you're right.\"")
+            print("\"Hm,\" Rock said. \"I know throwing you up was a good idea. Life advice on command.\"\nYou decide to get away from the T-Rex and lizard, and leave the lab.\nYou're surrounded by tight quarters, and pass by a family of 4 colorful anthropomorphic birds." \
+            "\nThey seem like main characters.\nYou find the airtight fron hatch and swing it right open." \
+            "\n\nWhen was the last time you went skidiving?\nYou jump through the clouds, and enjoy the view.\nYou just helped someone with their insecurities, and maybe helped yourself a little.\nTime to dissipate from this realm.")
             Winston.complete_realm(Winston.p_available)
             Winston.p_available = False
     proceed()
@@ -430,27 +436,34 @@ def padlocke(Winston):
                         print("The braided girl has dozens of papers surrounding her.\n\"Can you help me with this 9th grade Algebra? I need to compete with Erin.\"\nYou took a look at the papers. Math was never your strong suit. You shrug at her.\n\"Then you're USELESS to me.\"\nOkay, then.")
                     case "8":
                         print("When you approach the kid, he tilts his head.\n\"You know... you kinda look constipated.\"\nThe other kids stare at him.\n\"No he doesn't...?\" said Chloe.\nYou get such strong second-hand embarrasement that you wanna die.")
-                input("Press Enter onne more time to get back out there.")
+                proceed()
     #nThis feels like the same place you were created in. The 'current' you, actually.
-
+#The final sequence of the game
 def home(Winston):
     Winston.in_loop = False
     print("...gulp.")
     proceed()
     print("You've learned so much through your journey through this strange, vast multiverse." \
     "\nYou learned that it's never too late to redeem yourself." \
-    "\nBonds that have been sour for long don't have to stay that way." \
+    "\nBonds that have been sour for long don't have to stay that way.\nBe grateful for the peoples you have and the situation you're in." \
     "\n\nAnd growing up is... okay.")
     proceed()
-    print("You go back to your old town.\nSince the Kate-Marcimus Empire was defeated by you, things have gotten better." \
-    "\nYou pay a visit to your old friend Michael Theque Whytman's grave.\n\"I hope that other Michael's as weird as you were.\"")
+    print("\nYou go back to your old town.\nSince the Kate-Marcimus Empire was defeated by you, things have gotten better.")
     proceed()
-    print("You go to Hopper's old house. You missed him--her?!")
+    print("\nYou go to the border of the Khan Academy code window, and visit Oh Noes\nYou tell him about the strange Visual Studio Code space you've encountered.\nHe" \
+    "'s dumbfounded that there can be a code editor with no cartoon error buddy.\nYou agree, it's WAY lamer.")
     proceed()
-    print("Pinky.\n\"Hey.\"\n\"Hey.\"\n...\"You look happier,\" Pinky says.\n\"You, too,\" you say.")
+    print("\nYou go to the old Donut Deluxe. Inside is Old Spice Man, AND Mr. Pants. Those two brothers finally reconciled."\
+    "\nAlso, it seems that Donut Deluxe is a front for the mafia now.\nYou say hi to Primosaur, Kaydoo, and brand new muscle man... PURPLE PI?\n\"Just an odd job, before I get on my feet.\"")
+    proceed()
+    print("\nYou pay a visit to your old friend Michael Theque Whytman's grave.\n\"I hope that other Michael's as weird as you were.\"")
+    proceed()
+    print("\nYou go to Hopper's old house. You missed him--her?!\nLooks like Hopper's transition has gone on nicely.\nYou have a fun nostalgic conversation with her in her residence up in a tree.\nYou promise to have a \"Girl's Night\" soon.")
+    proceed()
+    print("\nYou go... to your old house. The house your ex-wife lives.\n\nPinky.\n\n\"Hey.\"\n\"Hey.\"\n...\"You look happier,\" Pinky says.\n\"You, too,\" you say.")
     proceed()
     print("Well, that's enough. You're thinking that you could go back out there.")
-    proceed()
+    input("\nPress Enter one more time to explore the multiverse some more.")
     print(endlogo)
 
 def main():
@@ -506,7 +519,6 @@ def main():
             case "5":
                 if winston.home_available == True:
                     home(winston)
-                    #in_loop = False
             case _:
                 print("Option not valid. You find yourself stretching to some unknown place in the universe...\nMaybe just pick one of the numbers given next time...\n")
                 input("Press Enter to continue.")
